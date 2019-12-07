@@ -13,9 +13,9 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!-- IOC -->
-    <!-- <bean id="blog1"  class="cn.edu.ccut.bo.Blog"></bean>
+    <bean id="blog"  class="cn.edu.ccut.bo.Blog"></bean>
     
-    <bean id="userFactory" class="cn.edu.ccut.bo.UserFactory"/>
+    <!-- <bean id="userFactory" class="cn.edu.ccut.bo.UserFactory"/>
     <bean id="user01"  factory-bean="userFactory" factory-method="newInstance1"></bean>
     
     <bean id="user02" class="cn.edu.ccut.bo.UserFactory" factory-method="newInstance2"></bean> -->
