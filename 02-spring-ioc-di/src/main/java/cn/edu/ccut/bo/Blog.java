@@ -1,5 +1,9 @@
 package cn.edu.ccut.bo;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+/*@Component*/
 public class Blog {
 
 	private Integer id;
@@ -18,6 +22,7 @@ public class Blog {
 	public Integer getId() {
 		return id;
 	}
+	//@Value("101")
 	public void setId(Integer id) {
 		this.id = id;
 	}

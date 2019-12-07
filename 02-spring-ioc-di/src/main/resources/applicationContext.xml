@@ -13,19 +13,62 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!-- IOC -->
-    <bean id="blog1" name="blog1" class="cn.edu.ccut.bo.Blog"></bean>
+    <!-- <bean id="blog1"  class="cn.edu.ccut.bo.Blog"></bean>
+    
+    <bean id="userFactory" class="cn.edu.ccut.bo.UserFactory"/>
+    <bean id="user01"  factory-bean="userFactory" factory-method="newInstance1"></bean>
+    
+    <bean id="user02" class="cn.edu.ccut.bo.UserFactory" factory-method="newInstance2"></bean> -->
+    
+    <!-- <context:component-scan base-package="cn.edu.ccut.bo"></context:component-scan> -->
+    
     <!-- DI -->
-    <bean id="blog2" name="blog2" class="cn.edu.ccut.bo.Blog">
+    <!-- <bean id="blog2"  class="cn.edu.ccut.bo.Blog">
     	<constructor-arg name="id" value="101"/>
     	<constructor-arg name="name" value="Java"/>
     	<constructor-arg name="descs" value="Java开发"/>
     </bean>
     
-    <bean id="blog3" name="blog3" class="cn.edu.ccut.bo.Blog">
+    <bean id="blog3" class="cn.edu.ccut.bo.Blog">
     	<property name="id" value="102"/>
     	<property name="name" value="Python"/>
     	<property name="descs" value="Python开发"/>
     </bean>
+    
+    <bean id="user"  class="cn.edu.ccut.bo.User">
+    	<property name="blog" ref="blog3"/>
+    	<property name="strs">
+    		<array>
+    			<value>aaa</value>
+    			<value>bbb</value>
+    			<value>ccc</value>
+    		</array>
+    	</property>
+    	<property name="list">
+    		<list>
+    			<value>111</value>
+    			<value>222</value>
+    			<value>333</value>
+    		</list>
+    	</property>
+    	<property name="set">
+    		<set>
+    			<value>111</value>
+    			<value>222</value>
+    			<value>333</value>
+    		</set>
+    	</property>
+    	<property name="map">
+    		<map>
+    			<entry key="1" value-ref="blog3"></entry>
+    		</map>
+    	</property>
+    	<property name="properties">
+    		<props>
+    			<prop key="1">aaa</prop>
+    		</props>
+    	</property>
+    </bean> -->
     
     
 </beans>
