@@ -23,7 +23,8 @@
 	    <aop:aspect ref="myAdvice">
 	        <aop:pointcut id="myPoint" expression="execution(* cn.edu.ccut.service.impl.BlogServiceImpl.*(..))"></aop:pointcut>
 	        <aop:before method="beforeAdvice" pointcut-ref="myPoint"></aop:before>
-	        <aop:after method="afterAdvice" pointcut-ref="myPoint"></aop:after>
+	        <aop:after-returning method="afterAdvice" pointcut-ref="myPoint"></aop:after-returning>
+	        <!-- <aop:after method=""/> -->
 	        <aop:after-throwing method="exception" pointcut-ref="myPoint"></aop:after-throwing>
 	        <aop:around method="aroundAdvice" pointcut-ref="myPoint"></aop:around>
 	    </aop:aspect>
