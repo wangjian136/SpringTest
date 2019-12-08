@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+    
+    <bean id="blogService" class="cn.edu.ccut.service.impl.BlogServiceImpl"/>
+    
+    <!-- 配置AOP -->
+	<!-- 配置通知bean -->
+	<bean id="myAdvice" class="cn.edu.ccut.advice.AspectAdvice"></bean>
+	<!-- 配置切面（切点、通知） -->
+	<aop:config proxy-target-class="true">
+	    <aop:aspect ref="myAdvice">
+	        <aop:pointcut id="myPoint" expression="execution(* cn.edu.ccut.service.impl.BlogServiceImpl.*(..))"></aop:pointcut>
+	        <aop:before method="beforeAdvice" pointcut-ref="myPoint"></aop:before>
+	        <aop:after method="afterAdvice" pointcut-ref="myPoint"></aop:after>
+	        <aop:after-throwing method="exception" pointcut-ref="myPoint"></aop:after-throwing>
+	        <aop:around method="aroundAdvice" pointcut-ref="myPoint"></aop:around>
+	    </aop:aspect>
+	</aop:config>
+</beans>
