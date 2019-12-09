@@ -18,17 +18,17 @@
     
     <!-- 引入jdbc配置文件 -->
     <!-- system-properties-mode="NEVER" -->
-    <context:property-placeholder location="classpath:config.properties"></context:property-placeholder>
+    <context:property-placeholder location="classpath:config.properties" system-properties-mode="NEVER"/>
     
     
-    <bean id="propertyConfigurer"
+    <!-- <bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:config.properties</value>
 			</list>
 		</property>
-	</bean>
+	</bean> -->
     
     <!-- 配置dataSource数据源 -->
     <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource">

@@ -8,5 +8,7 @@ public interface BlogService {
 
 	public List<Blog> selectAll();
 	
+	public Blog selectBlogById(Integer id);
+	
 	public void saveBlog(Blog blog);
 }
