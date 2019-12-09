@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        
+    <!-- 配置组件扫描，以便于告诉Spring哪里有注解 -->
+	<context:component-scan base-package="cn.edu.ccut"></context:component-scan>
+    
+    <!-- 引入jdbc配置文件 -->
+    <!-- system-properties-mode="NEVER" -->
+    <context:property-placeholder location="classpath:config.properties" system-properties-mode="NEVER"/>
+    
+    <!-- 配置dataSource数据源 -->
+    <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+    </bean>
+    
+    <!-- 配置Hibernate JPA EntityManagerFactory -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    	<property name="dataSource" ref="dataSource" />
+    	<property name="jpaVendorAdapter">
+    		<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+    			<!-- 配置Hibernate相关的属性 -->
+    			<property name="database" value="MYSQL"/>
+    			<property name="generateDdl" value="true"/>
+    			<property name="showSql" value="true"/>
+    		</bean>
+    	</property>
+    	<property name="packagesToScan" value="cn.edu.ccut.bo"></property>
+    </bean>
+    
+    <!-- 配置Hibernate JPA 事务管理器 -->
+    <bean id="tx" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"></property>
+    </bean>
+    
+    <!-- 配置注解管理事务 -->
+    <tx:annotation-driven transaction-manager="tx" proxy-target-class="true"></tx:annotation-driven>
+</beans>
