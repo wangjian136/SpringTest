@@ -33,7 +33,7 @@
 		<hibernate.version>5.4.9.Final</hibernate.version>
 		<springdata-jpa.version>2.2.3.RELEASE</springdata-jpa.version>
 		<slf4j-log4j.version>1.7.25</slf4j-log4j.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 	</properties>
 	
 	<dependencyManagement>
